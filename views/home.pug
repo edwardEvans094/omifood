@@ -8,6 +8,7 @@ html(lang='en')
     link(rel='stylesheet', type='text/css', href='resources/css/style.css')
     link(rel='stylesheet', type='text/css', href='resources/css/queries.css')
     link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic', rel='stylesheet', type='text/css')
+    meta(name='csrf-token', content=_csrf)
     title Omnifood
   body
     header
@@ -280,7 +281,8 @@ html(lang='en')
       .row
         h2 We're happy to hear from you
       .row
-        form.contact-form(method='post', action='#')
+        form.contact-form(method='post', action='/api/save-order')
+          input(type='hidden', name='_csrf', value=_csrf)
           .row
             .col.span-1-of-3
               label(for='name') Name
@@ -293,24 +295,18 @@ html(lang='en')
               input#email(type='email', name='email', placeholder='Your email', required='')
           .row
             .col.span-1-of-3
-              label(for='find-us') How did you find us?
-            .col.span-2-of-3
-              select#find-us(name='find-us')
-                option(value='friends', selected='') Friends
-                option(value='search') Search engine
-                option(value='ad') Advertisement
-                option(value='other') Other
-          .row
-            .col.span-1-of-3
-              label Newsletter?
-            .col.span-2-of-3
-              input#news(type='checkbox', name='news', checked='')
-              |  Yes, please
-          .row
-            .col.span-1-of-3
-              label Drop us a line
+              label Address
             .col.span-2-of-3
               textarea(name='message', placeholder='Your message')
+          .row
+            .col.span-1-of-3
+              label(for='find-us') Combo
+            .col.span-2-of-3
+              select#find-us(name='find-us')
+                option(value='1', selected='') Combo book and gift box
+                option(value='2') Combo book and bookmark
+                option(value='3') Combo book and condom
+                option(value='4') Just comdon
           .row
             .col.span-1-of-3
               label  

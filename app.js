@@ -35,6 +35,8 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 
+const orderController = require('./controllers/order')
+
 /**
  * API keys and Passport configuration.
  */
@@ -172,6 +174,12 @@ app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 app.get('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getPinterest);
 app.post('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.postPinterest);
 app.get('/api/google-maps', apiController.getGoogleMaps);
+
+
+
+
+
+app.post('/api/save-order', orderController.saveOrder)
 
 /**
  * OAuth authentication routes. (Sign in)
