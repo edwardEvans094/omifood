@@ -35,7 +35,8 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 
-const orderController = require('./controllers/order')
+const orderController = require('./controllers/order');
+const productController = require('./controllers/product');
 
 /**
  * API keys and Passport configuration.
@@ -176,10 +177,17 @@ app.post('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuth
 app.get('/api/google-maps', apiController.getGoogleMaps);
 
 
+app.post('/api/save-order', orderController.saveOrder);
 
+app.post('/api/order/create', orderController.addOrder);
+app.post('/api/order/edit', orderController.editOrder);
+app.post('/api/order/remove', orderController.removeOrder);
+app.post('/api/order/list', orderController.listAllOrder);
 
-
-app.post('/api/save-order', orderController.saveOrder)
+app.post('/api/product/create', productController.addProduct);
+app.post('/api/product/edit', productController.editProduct);
+app.post('/api/product/remove', productController.removeProduct);
+app.post('/api/product/list', productController.listAllProduct);
 
 /**
  * OAuth authentication routes. (Sign in)
@@ -236,7 +244,7 @@ if (process.env.NODE_ENV === 'development') {
   // only use in development
   app.use(errorHandler());
 } else {
-  app.use(function(err, req, res, next) {
+  app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).send('Server Error');
   });
