@@ -1,26 +1,30 @@
 const mongoose = require('mongoose');
+const Checkit = require('checkit');
 const Order = require('../models/Order');
 const Product = require('../models/Product');
 
-
 exports.addProduct = (req, res) => {
-  const name = req.body.name;
-  const isBunbdle = req.body.isBunbdle;
-  const price = req.body.price;
-  const size = req.body.size;
-  const productIds = req.body.productIds;
+  const [err, params] = new Checkit({
+    name: ['required', 'string'],
+    isBunbdle: 'boolean',
+    price: ['required', 'number'],
+    size: 'string',
+    productIds: 'array'
+  }).validateSync(req.body);
+
+  if (err) return res.send(err);
 
   Product.find({
-    _id: productIds.map(id => mongoose.Types.ObjectId(id))
+    _id: params.productIds.map(id => mongoose.Types.ObjectId(id))
   }, (err, products) => {
     if (err || !products) return res.send('product not found!');
 
     const newProduct = new Product({
-      name,
-      isBunbdle,
-      price,
-      size,
-      productIds,
+      name: params.name,
+      isBunbdle: params.isBunbdle,
+      price: params.price,
+      size: params.size,
+      productIds: params.productIds,
     });
     newProduct.save(err => res.send(err));
   });
@@ -28,23 +32,26 @@ exports.addProduct = (req, res) => {
 
 
 exports.editProduct = (req, res) => {
-  const productId = req.body.productId;
-  const name = req.body.name;
-  const isBunbdle = req.body.isBunbdle;
-  const price = req.body.price;
-  const size = req.body.size;
-  const productIds = req.body.productIds;
+  const [err, params] = new Checkit({
+    productId: ['required', 'string'],
+    name: ['required', 'string'],
+    isBunbdle: 'boolean',
+    price: ['required', 'number'],
+    size: 'string',
+    productIds: 'array'
+  }).validateSync(req.body);
 
+  if (err) return res.send(err);
 
-  Product.findById(productId, (err, product) => {
+  Product.findById(params.productIds, (err, product) => {
     if (err) return res.send(err);
     if (!product) return res.send('product not found!');
 
-    product.name = name;
-    product.isBunbdle = isBunbdle;
-    product.price = price;
-    product.size = size;
-    product.productIds = productIds;
+    product.name = params.name;
+    product.isBunbdle = params.isBunbdle;
+    product.price = params.price;
+    product.size = params.size;
+    product.productIds = params.productIds;
 
     product.save(err => res.send(err));
   });

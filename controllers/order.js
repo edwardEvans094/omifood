@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Checkit = require('checkit');
 const Order = require('../models/Order');
 const Product = require('../models/Product');
 
@@ -6,23 +7,28 @@ exports.saveOrder = (req, res) => res.send('order save successfull and will be p
 
 
 exports.addOrder = (req, res) => {
-  const spiderumName = req.body.spiderumName;
-  const email = req.body.email;
-  const address = req.body.address;
-  const findUsBy = req.body.findUsBy;
-  const productIds = req.body.productIds;
+  const [err, params] = new Checkit({
+    spiderumName: ['required', 'string'],
+    email: 'string',
+    address: ['required', 'string'],
+    findUsBy: 'string',
+    productIds: 'array'
+  }).validateSync(req.body);
+
+  if (err) return res.send(err);
+
 
   Product.find({
-    _id: productIds.map(id => mongoose.Types.ObjectId(id))
+    _id: params.productIds.map(id => mongoose.Types.ObjectId(id))
   }, (err, products) => {
     if (err || !products) return res.send('product not found!');
 
     const newOrder = new Order({
-      spiderumUserName: spiderumName,
-      email,
-      address,
-      findUsBy,
-      productIds,
+      spiderumUserName: params.spiderumName,
+      email: params.email,
+      address: params.address,
+      findUsBy: params.findUsBy,
+      productIds: params.productIds,
     });
     newOrder.save(err => res.send(err));
   });
@@ -30,26 +36,30 @@ exports.addOrder = (req, res) => {
 
 
 exports.editOrder = (req, res) => {
-  const orderID = req.body.orderId;
-  const spiderumName = req.body.spiderumName;
-  const email = req.body.email;
-  const address = req.body.address;
-  const findUsBy = req.body.findUsBy;
-  const productIds = req.body.productIds;
+  const [err, params] = new Checkit({
+    orderID: ['required', 'string'],
+    spiderumName: ['required', 'string'],
+    email: 'string',
+    address: ['required', 'string'],
+    findUsBy: 'string',
+    productIds: 'array'
+  }).validateSync(req.body);
 
-  Order.findById(orderID, (err, order) => {
+  if (err) return res.send(err);
+
+  Order.findById(params.orderID, (err, order) => {
     if (err || !order) return res.send('order not found!');
 
     Product.find({
-      _id: productIds.map(id => mongoose.Types.ObjectId(id))
+      _id: params.productIds.map(id => mongoose.Types.ObjectId(id))
     }, (err, products) => {
       if (err || !products) return res.send('product not found!');
 
-      order.spiderumName = spiderumName || '';
-      order.email = email || '';
-      order.address = address || '';
-      order.findUsBy = findUsBy || '';
-      order.productIds = productIds || '';
+      order.spiderumName = params.spiderumName || null;
+      order.email = params.email || null;
+      order.address = params.address || null;
+      order.findUsBy = params.findUsBy || null;
+      order.productIds = params.productIds || null;
 
       order.save(err => res.send(err));
     });
