@@ -19,6 +19,7 @@ const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
+const Boom = require('boom');
 
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
@@ -26,6 +27,14 @@ const upload = multer({ dest: path.join(__dirname, 'uploads') });
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
 dotenv.load({ path: '.env.example' });
+
+/**
+ * Middlewares
+ */
+const SchemaValidator = require('./middlewares/SchemaValidator');
+// We are using the formatted Joi Validation error
+// Pass false as argument to use a generic error
+const validateRequest = SchemaValidator(true);
 
 /**
  * Controllers (route handlers).
@@ -184,10 +193,10 @@ app.post('/api/order/edit', orderController.editOrder);
 app.post('/api/order/remove', orderController.removeOrder);
 app.post('/api/order/list', orderController.listAllOrder);
 
-app.post('/api/product/create', productController.addProduct);
-app.post('/api/product/edit', productController.editProduct);
-app.post('/api/product/remove', productController.removeProduct);
-app.post('/api/product/list', productController.listAllProduct);
+app.post('/api/product/create', validateRequest, productController.addProduct);
+app.post('/api/product/edit', validateRequest, productController.editProduct);
+app.post('/api/product/remove', validateRequest, productController.removeProduct);
+app.get('/api/product/list', validateRequest, productController.listAllProduct);
 
 /**
  * OAuth authentication routes. (Sign in)
@@ -240,15 +249,39 @@ app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRed
 /**
  * Error Handler.
  */
-if (process.env.NODE_ENV === 'development') {
-  // only use in development
-  app.use(errorHandler());
-} else {
-  app.use((err, req, res, next) => {
-    console.error(err);
-    res.status(500).send('Server Error');
-  });
-}
+/* eslint no-unused-vars: 0 */
+app.use((err, req, res, next) => {
+  const errorMsg = `Caught by EH: ${err.toString()} ${err.stack ? `\r\nstack: ${err.stack}` : ''}`;
+  console.error(errorMsg);
+  let boomErr;
+  if (Boom.isBoom(err)) {
+    boomErr = err;
+  } else {
+    /* eslint no-lonely-if: 0 */
+    if (!(err instanceof Error)) {
+      let errMsg = err.message;
+      if (!errMsg) { errMsg = JSON.stringify(err.data || err); }
+      boomErr = new Boom(errMsg, err);
+    } else {
+      boomErr = Boom.boomify(err);
+    }
+  }
+  const { message, statusCode } = boomErr.output.payload;
+  const jsonOut = { ...boomErr.output.payload, error: { message, statusCode } };
+  if (err.data) {
+    jsonOut.error.data = err.data;
+  }
+  return res.status(statusCode).json(jsonOut);
+});
+// if (process.env.NODE_ENV === 'development') {
+//   // only use in development
+//   app.use(errorHandler());
+// } else {
+//   app.use((err, req, res, next) => {
+//     console.error(err);
+//     res.status(500).send('Server Error');
+//   });
+// }
 
 /**
  * Start Express server.

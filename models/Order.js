@@ -7,11 +7,13 @@ const orderSchema = new mongoose.Schema({
   email: String,
   address: String,
   findUsBy: String,
-  productIds: [mongoose.Schema.Types.ObjectId],
+  productIds: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product'
+  }],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 }, { timestamps: true });
-
 
 const Order = mongoose.model('Order', orderSchema);
 

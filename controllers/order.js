@@ -5,7 +5,6 @@ const Product = require('../models/Product');
 
 exports.saveOrder = (req, res) => res.send('order save successfull and will be processed!');
 
-
 exports.addOrder = (req, res) => {
   const [err, params] = new Checkit({
     spiderumName: ['required', 'string'],
