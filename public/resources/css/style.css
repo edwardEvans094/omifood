@@ -120,7 +120,7 @@ h2:after {
     color: #e67e22;
     font-size: 120%;
     margin-right: 10px;
-    
+
     /*secrets to align text and icons*/
     line-height: 120%;
     vertical-align: middle;
@@ -222,7 +222,7 @@ header {
     margin-top: 20px;
 }
 
-.logo-black { 
+.logo-black {
     display: none;
     height: 50px;
     width: auto;
@@ -576,7 +576,7 @@ footer {
 }
 
 .footer-nav li a:link,
-.footer-nav li a:visited, 
+.footer-nav li a:visited,
 .social-links li a:link,
 .social-links li a:visited {
     text-decoration: none;
@@ -628,7 +628,90 @@ footer p {
 }
 
 
+/* ----------------------------------------------- */
+/* CUSTOM STYLES */
+/* ----------------------------------------------- */
 
-
-
-
+.plan-box .btn-wrapper {
+    background: none !important;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+}
+.plan-box .btn-wrapper > .btn {
+    margin: 0;
+}
+.plan-box .btn-wrapper .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 280px;
+    margin-left: -140px;
+    box-shadow: 0 1px 15px rgba(0,0,0,.5);
+    border-radius: 5px;
+    background: #FFF;
+    padding: 0;
+}
+.plan-box .btn-wrapper .dropdown.active {
+    display: block;
+}
+.plan-box .btn-wrapper .dropdown .dropdown-header {
+    padding: 15px 30px;
+    font-size: 18px;
+}
+.plan-box .btn-wrapper .dropdown .close {
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 24px;
+    width: 24px;
+    color: #aaa;
+}
+.plan-box .btn-wrapper .dropdown .close:hover {
+    color: #d9372b;
+}
+.plan-box .btn-wrapper .dropdown #items {
+    padding: 0;
+    background: none;
+    border: 0;
+}
+.plan-box .btn-wrapper .dropdown .item-option {
+    border: 0;
+    padding: 0;
+    background: none;
+}
+.plan-box .btn-wrapper .dropdown .item-option + .item-option {
+    margin-top: 15px;
+}
+.plan-box .btn-wrapper .dropdown .quantity {
+    width: 50px;
+    font-size: 15px;
+    text-align: right;
+    padding: 6px 3px;
+    vertical-align: middle;
+    border-radius: 3px;
+    border: 1px solid #CCC;
+}
+.plan-box .btn-wrapper .dropdown .size {
+    width: 55px;
+    font-size: 15px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+.plan-box .btn-wrapper .dropdown .gender {
+    width: 100px;
+    font-size: 15px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+.plan-box .btn-wrapper .dropdown .item-add {
+    font-size: 15px;
+    padding: 5px 15px;
+    margin: 20px 0 0;
+}
+.plan-box .btn-wrapper .dropdown .submit {
+    margin: 0 20px;
+}
