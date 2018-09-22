@@ -191,7 +191,6 @@ input[type=submit]:active {
     color: #fff;
 }
 
-
 /* ----------------------------------------------- */
 /* HEADER */
 /* ----------------------------------------------- */
@@ -714,4 +713,52 @@ footer p {
 }
 .plan-box .btn-wrapper .dropdown .submit {
     margin: 0 20px;
+}
+
+
+#shopping-cart-table tbody {
+    border: solid #CCC;
+    border-width: 1px 0;
+}
+#shopping-cart-table th, td {
+    padding: 15px 10px;
+}
+#shopping-cart-table .index {}
+#shopping-cart-table .name {}
+#shopping-cart-table .quantity {}
+#shopping-cart-table .price,
+#shopping-cart-table .subtotal {
+    width: 13%;
+}
+#shopping-cart-table .actions {}
+
+/* Text */
+
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+.text-medium {
+    font-weight: 500;
+}
+.text-primary {
+    color: #e67e22;
+}
+
+/* Button */
+.btn-danger {
+    cursor: pointer;
+    background: #F44336;
+    color: #FFF !important;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.btn-danger:hover {
+    background: #be2418;
 }

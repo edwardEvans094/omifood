@@ -39,6 +39,7 @@ const validateRequest = SchemaValidator(true);
 /**
  * Controllers (route handlers).
  */
+const cartController = require('./controllers/cart');
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
@@ -135,6 +136,7 @@ app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawes
  * Primary app routes.
  */
 app.get('/', homeController.index);
+app.get('/cart', cartController.renderCartPage);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
