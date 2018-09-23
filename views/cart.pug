@@ -7,10 +7,17 @@ html(lang='en')
     link(rel='stylesheet', type='text/css', href='vendors/css/ionicons.min.css')
     link(rel='stylesheet', type='text/css', href='resources/css/style.css')
     link(rel='stylesheet', type='text/css', href='resources/css/queries.css')
-    link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,300italic', rel='stylesheet', type='text/css')
+
+    link(rel='icon' href='resources/img/spiderum-logo.png' type='image/x-icon')
+
     meta(name='csrf-token', content=_csrf)
     title Cart
   body
+    nav
+      .row
+        a(href='/')
+          img.logo(src='resources/img/spiderum-logo.png', alt='Spiderum logo')
     section.section-cart
       .row
         h2 Your shopping cart
@@ -56,76 +63,61 @@ html(lang='en')
                 h4.text-primary 6.767.000 vnd
     section.section-form
       .row
-        h2 We're happy to hear from you
+        h2 Cám ơn bạn đã đặt hàng
       .row
         form.contact-form(method='post', action='/api/save-order')
           input(type='hidden', name='_csrf', value=_csrf)
           .row
-            .col.span-1-of-3
-              label(for='name') Name
-            .col.span-2-of-3
-              input#name(type='text', name='name', placeholder='Your name', required='')
+            .col.span-2-of-5
+              label(for='name') Tên
+            .col.span-3-of-5
+              input#name(type='text', name='name', placeholder='Tên của bạn', required='')
           .row
-            .col.span-1-of-3
-              label(for='username') Spiderum username
-            .col.span-2-of-3
-              input#name(type='text', name='username', placeholder='Your Spiderum username', required='')
+            .col.span-2-of-5
+              label(for='username') Tên đăng nhập Spiderum
+            .col.span-3-of-5
+              input#name(type='text', name='username', placeholder='Tên đăng nhập Spiderum (nếu có)', required='')
           .row
-            .col.span-1-of-3
+            .col.span-2-of-5
               label(for='email') Email
-            .col.span-2-of-3
-              input#email(type='email', name='email', placeholder='Your email', required='')
+            .col.span-3-of-5
+              input#email(type='email', name='email', placeholder='Email', required='')
           .row
-            .col.span-1-of-3
-              label Address
-            .col.span-2-of-3
-              textarea(name='message', placeholder='Your message')
+            .col.span-2-of-5
+              label Địa chỉ
+            .col.span-3-of-5
+              textarea(name='address', placeholder='Địa chỉ')
           .row
-            .col.span-1-of-3
+            .col.span-2-of-5
               label(for='find-us') Find us by
-            .col.span-2-of-3
+            .col.span-3-of-5
               select#find-us(name='find-us')
-                option(value='1', selected='') Facebook
-                option(value='2') Search engine
-                option(value='3') Spiderum
-                option(value='4') Friends
-                option(value='4') Other
+                option(value='Facebook', selected='') Facebook
+                option(value='Google') Google
+                option(value='Spiderum') Spiderum
+                option(value='Friends') Friends
+                option(value='Other') Other
           .row
-            .col.span-1-of-3
+            .col.span-2-of-5
               label  
-            .col.span-2-of-3
-              input(type='submit', value='Send it!')
+            .col.span-3-of-5
+              input(type='submit', value='Mua')
     footer
       .row
         .col.span-1-of-2
           ul.footer-nav
             li
-              a(href='#') About us
-            li
-              a(href='#') Blog
+              a(href='https://spiderum.com') Website
             li
               a(href='#') Press
-            li
-              a(href='#') iOS App
-            li
-              a(href='#') Android App
         .col.span-1-of-2
           ul.social-links
             li
               a(href='#')
                 i.ion-social-facebook
-            li
-              a(href='#')
-                i.ion-social-twitter
-            li
-              a(href='#')
-                i.ion-social-googleplus
-            li
-              a(href='#')
-                i.ion-social-instagram
       .row
         p
-          | Copyright © 2015 by Omnifood. All rights reserved.
+          | Copyright © 2018 by Spiderum. All rights reserved.
 
     // NOTE[TRUNG] JS file for animation
     script(src='/js/lib/jquery.min.js')

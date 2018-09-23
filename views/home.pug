@@ -7,181 +7,167 @@ html(lang='en')
     link(rel='stylesheet', type='text/css', href='vendors/css/ionicons.min.css')
     link(rel='stylesheet', type='text/css', href='resources/css/style.css')
     link(rel='stylesheet', type='text/css', href='resources/css/queries.css')
-    link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,300italic', rel='stylesheet', type='text/css')
+
+    link(rel='icon' href='resources/img/spiderum-logo.png' type='image/x-icon')
+
     meta(name='csrf-token', content=_csrf)
-    title Omnifood
+    title Spiderum Book
   body
     header
       nav
         .row
-          img.logo(src='resources/img/logo-white.png', alt='Omnifood logo')
-          img.logo-black(src='resources/img/logo.png', alt='Omnifood logo')
+          a(href='/')
+            img.logo(src='resources/img/spiderum-logo.png', alt='Spiderum logo')
+          //- img.logo(src='resources/img/logo-white.png', alt='Omnifood logo')
+          //- img.logo-black(src='resources/img/logo.png', alt='Omnifood logo')
           ul.main-nav
             li
-              a(href='#') Food delivery
+              a#goToAboutUs(href='#aboutUs') Về chúng tôi
             li
-              a(href='#') How it works
+              a#goToAuthors(href='#authors') Tác giả
             li
-              a(href='#') Our cities
+              a#goToInstruction(href='#instruction') Hướng dẫn
             li
-              a(href='#') Sign up
+              a#goToPlans(href='#plans') Đặt mua
             li
-              a#goToPlans(href='#plans') Plans
+              a(href='/cart')
+                i.ion-ios-cart.icon-cart
+                | Giỏ hàng
       .hero-text-box
         h1
-          | Goodbye junk food.
+          | DÀNH DĂM BA CÁI THANH XUÂN
           br
-          | Hello super healthy meals.
-        a.btn.btn-full(href='#') I'm hungry
-        a.btn.btn-ghost(href='#') Show me more
-    section.section-features
+          | BÁN "DĂM BA CÁI TUỔI TRẺ"
+        a.btn.btn-full(href='#') Đặt sách ngay
+        //- span (tin tưởng admin đẹp trai)
+        a.btn.btn-ghost(href='#') Tìm hiểu tí đã
+        //- span (bọn này hay troll lắm)
+    section.section-features#aboutUs
       .row
-        h2 Get food fast — not fast food
-        h2 ABOUT
-        |                 SAPO
+        .gif
+          iframe.giphy-embed(src='https://giphy.com/embed/2Wh63HbZZY8D27cuDd' width='480' height='270' frameborder='0' allowfullscreen='')
+        //- h2 Get food fast — not fast food
+        h2 TỚI PHẦN NGHIÊM TÚC RỒI
         p.long-copy
-          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      .row
-        .col.span-1-of-4.box
-          i.ion-ios-infinite-outline.icon-big
-          h3 Up to 365 days/year
-          p
-            | Never cook again! We really mean that. Our subscription plans include up to 365 days/year coverage. You can also choose to order more flexibly if that's your style.
-        .col.span-1-of-4.box
-          i.ion-ios-stopwatch-outline.icon-big
-          h3 Ready in 20 minutes
-          p
-            | You're only twenty minutes away from your delicious and super healthy meals delivered right to your home. We work with the best chefs in each town to ensure that you're 100% happy.
-        .col.span-1-of-4.box
-          i.ion-ios-nutrition-outline.icon-big
-          h3 100% organic
-          p
-            | All our vegetables are fresh, organic and local. Animals are raised without added hormones or antibiotics. Good for your health, the environment, and it also tastes better!
-        .col.span-1-of-4.box
-          i.ion-ios-cart-outline.icon-big
-          h3 Order anything
-          p
-            | We don't limit your creativity, which means you can order whatever you feel like. You can also choose from our menu containing over 100 delicious meals. It's up to you!
+          | Sau hơn hai năm hoạt động, từ một nhóm nho nhỏ ôm hoài bão to, Spiderum đã vươn mình phát triển trở thành Động Nhện Online lớn nhất Việt Nam (đố các bạn tìm ra cái Động Nhện nào khác đấy) với khoảng 25.000 thành viên, 10.000 bài viết, cùng 200.000 người truy cập mỗi tháng.
+        p.long-copy
+          | Thành công này, bên cạnh việc là nguồn động viên cực lớn, cũng đồng thời đặt ra những thách thức không nhỏ cho
+          span.text-bold  Spiderum Team:
+        p.long-copy.text-italic
+          | Phải làm gì để tri ân những tác giả đã và đang đóng góp những bài viết cực kỳ chất lượng trên Spiderum?
+        p.long-copy.text-italic
+          | Phải làm gì để phát triển và thu hút thêm nhiều tác giả mới với những bài viết đặc sắc, vốn là chất xúc tác biến Spiderum thành một không gian cực kỳ thú vị?
+        p.long-copy.text-italic
+          | Phải làm gì để Spiderum có thể phát triển bền vững, không ngừng nâng cấp, giới thiệu tính năng mới – trong khi vẫn tiếp tục nói “Không” với quảng cáo phản cảm nhằm tối ưu hóa trải nghiệm người dùng?
+        p.long-copy.text-italic
+          | Phải làm gì để tăng cường sự hiện diện và ảnh hưởng của Spiderum trong đời sống thực, thông qua những vật phẩm và sự kiện hữu hình?
+        p.long-copy &hellip;
+            //- Phải làm gì để tri ân những tác giả đã và đang đóng góp những bài viết cực kỳ chất lượng trên Spiderum?
+            //- Phải làm gì để phát triển và thu hút thêm nhiều tác giả mới với những bài viết đặc sắc, vốn là chất xúc tác biến Spiderum thành một không gian cực kỳ thú vị?
+            //- Phải làm gì để Spiderum có thể phát triển bền vững, không ngừng nâng cấp, giới thiệu tính năng mới – trong khi vẫn tiếp tục nói “Không” với quảng cáo phản cảm nhằm tối ưu hóa trải nghiệm người dùng?
+            //- Phải làm gì để tăng cường sự hiện diện và ảnh hưởng của Spiderum trong đời sống thực, thông qua những vật phẩm và sự kiện hữu hình?
+            //- …
+            //- Thứ bạn đang thấy ngay lúc này chính là bước đi đầu tiên của chúng tôi trên hành trình tìm kiếm câu trả lời thỏa đáng cho tất cả những thắc mắc kể trên.
+            //- Còn bạn, bạn sẽ bước tiếp cùng chúng tôi trên hành trình đầy thử thách nhưng không kém phần thú vị của Spiderum trong năm 2019 chứ?
+        p.long-copy
+          | Thứ bạn đang thấy ngay lúc này chính là bước đi đầu tiên của chúng tôi trên hành trình tìm kiếm câu trả lời thỏa đáng cho tất cả những thắc mắc kể trên.
+        p.long-copy
+          | Còn bạn, bạn sẽ bước tiếp cùng chúng tôi trên hành trình đầy thử thách nhưng không kém phần thú vị của Spiderum trong năm 2019 chứ?
     section.section-meals
       ul.meals-showcase.clearfix
         li
           figure.meal-photo
-            img(src='resources/img/1.jpg', alt='Korean bibimbap with egg and vegetables')
+            img(src='resources/img/9.jpg', alt='Spiderum book 1')
         li
           figure.meal-photo
-            img(src='resources/img/2.jpg', alt='Simple italian pizza with cherry tomatoes')
+            img(src='resources/img/10.jpg', alt='Spiderum book 2')
         li
           figure.meal-photo
-            img(src='resources/img/3.jpg', alt='Chicken breast steak with vegetables')
+            img(src='resources/img/11.jpg', alt='Spiderum book 3')
         li
           figure.meal-photo
-            img(src='resources/img/4.jpg', alt='Autumn pumpkin soup')
+            img(src='resources/img/12.jpg', alt='Spiderum book 4')
+    section.about
+      .row
+        h2
+          | Về Dăm ba cái tuổi trẻ
+        p.long-copy
+          | “Dăm ba cái tuổi trẻ” là dự án đầu tiên đánh dấu bước chuyển mình của Spiderum từ một nền tảng online thuần túy trở thành một cộng đồng hoạt động tích cực cả online lẫn offline, với mục tiêu gắn kết và tạo giá trị tích cực cho bộ phận tri thức trẻ tại Việt Nam.
+        p.long-copy
+          | Cuốn sách bạn sẽ cầm trên tay là một tuyển tập gồm 28 bài viết do Spiderum Team tuyển chọn kỹ càng trước khi đầu tư biên tập và vẽ minh họa lại. “Dăm ba cái tuổi trẻ” gồm 4 phần, với chủ đề xuyên suốt xoay quanh những trải nghiệm, suy ngẫm và khúc mắc của tuổi trẻ.
+        p.long-copy
+          | Sau ấn phẩm này, Spiderum Team hy vọng có thể tiếp tục duy trì xuất bản các ấn phẩm khác với nội dung được đóng góp bởi cộng đồng.
+    section.authors#authors
+      h2 Các tác giả có bài viết trong “Dăm ba cái tuổi trẻ”
+      .row
+        .col.span-1-of-4.box
+          //- i.ion-ios-infinite-outline.icon-big
+          //- h3 Up to 365 days/year
+          p Hạnh Dung
+          p Hexpion
+          p BlackMeow
+          p Trịnh Nhật Tuân
+          p Yo Le
+        .col.span-1-of-4.box
+          //- i.ion-ios-stopwatch-outline.icon-big
+          //- h3 Ready in 20 minutes
+          p Elbe040
+          p Vũ Phạm Lan Anh
+          p TheMerc
+          p Nguyễn Bảo Trung
+        .col.span-1-of-4.box
+          //- i.ion-ios-nutrition-outline.icon-big
+          //- h3 100% organic
+          p Lưu Phong Trường
+          p Hùng Vũ
+          p Nguyễn Huỳnh Nhất Bảo
+          p Loveless
+        .col.span-1-of-4.box
+          //- i.ion-ios-cart-outline.icon-big
+          //- h3 Order anything
+          p Huskywannafly
+          p Nga Levi
+          p Gấu SP
+          p Giấy
+      .row
+        p.long-copy.note.text-italic
+          | Ngoài khoản nhuận bút tương ứng với số bài viết được lựa chọn và số lượng sách đến tay người đọc, các tác giả còn nhận thêm một Spiderum Gift Box, đồng thời được vinh danh và tri ân trực tiếp trong sách.
+    section.giftboxes
       ul.meals-showcase.clearfix
         li
           figure.meal-photo
-            img(src='resources/img/5.jpg', alt='Paleo beef steak with vegetables')
+            img(src='resources/img/13.jpg', alt='Giftbox 1')
         li
           figure.meal-photo
-            img(src='resources/img/6.jpg', alt='Healthy baguette with egg and vegetables')
+            img(src='resources/img/14.jpg', alt='Giftbox 2')
         li
           figure.meal-photo
-            img(src='resources/img/7.jpg', alt='Burger with cheddar and bacon')
+            img(src='resources/img/15.jpg', alt='Giftbox 3')
         li
           figure.meal-photo
-            img(src='resources/img/8.jpg', alt='Granola with cherries and strawberries')
-    section.section-steps
+            img(src='resources/img/16.jpg', alt='Giftbox 4')
+    section.section-steps#instruction
       .row
-        h2 How it works — Simple as 1, 2, 3 (cach de order sach, de sau cac goi order)
+        h2 Các bước đặt order
       .row
-        .col.span-1-of-2.steps-box
-          img.app-screen(src='resources/img/app-iPhone.png', alt='Omnifood app on iPhone')
-        .col.span-1-of-2.steps-box
+        .steps-box
           .works-step.clearfix
             div 1
-            p Choose the subscription plan that best fits your needs and sign up today.
+            p
+              | Chọn và điền chính xác thông tin đơn hàng theo hướng dẫn
           .works-step.clearfix
             div 2
             p
-              | Order your delicious meal using our mobile app or website. Or you can even call us!
+              | Nhận email xác nhận kèm hướng dẫn chuyển khoản tương ứng với order của bạn
           .works-step.clearfix
             div 3
-            p Enjoy your meal after less than 20 minutes. See you the next time!
-          a.btn-app(href='#')
-            img(src='resources/img/download-app.svg', alt='App Store Button')
-          a.btn-app(href='#')
-            img(src='resources/img/download-app-android.png', alt='Play Store Button')
-    //
-      <section class="section-cities">
-      <div class="row">
-      <h2>We're currently in these cities</h2>
-      </div>
-      <div class="row">
-      <div class="col span-1-of-4 box">
-      <img src="resources/img/lisbon-3.jpg" alt="Lisbon">
-      <h3>Lisbon</h3>
-      <div class="city-feature">
-      <i class="ion-ios-person icon-small"></i>
-      1600+ happy eaters
-      </div>
-      <div class="city-feature">
-      <i class="ion-ios-star icon-small"></i>
-      60+ top chefs
-      </div>
-      <div class="city-feature">
-      <i class="ion-social-twitter icon-small"></i>
-      <a href="#">@omnifood_lx</a>
-      </div>
-      </div>
-      <div class="col span-1-of-4 box">
-      <img src="resources/img/san-francisco.jpg" alt="San Francisco">
-      <h3>San Francisco</h3>
-      <div class="city-feature">
-      <i class="ion-ios-person icon-small"></i>
-      3700+ happy eaters
-      </div>
-      <div class="city-feature">
-      <i class="ion-ios-star icon-small"></i>
-      160+ top chefs
-      </div>
-      <div class="city-feature">
-      <i class="ion-social-twitter icon-small"></i>
-      <a href="#">@omnifood_sf</a>
-      </div>
-      </div>
-      <div class="col span-1-of-4 box">
-      <img src="resources/img/berlin.jpg" alt="Berlin">
-      <h3>Berlin</h3>
-      <div class="city-feature">
-      <i class="ion-ios-person icon-small"></i>
-      2300+ happy eaters
-      </div>
-      <div class="city-feature">
-      <i class="ion-ios-star icon-small"></i>
-      110+ top chefs
-      </div>
-      <div class="city-feature">
-      <i class="ion-social-twitter icon-small"></i>
-      <a href="#">@omnifood_berlin</a>
-      </div>
-      </div>
-      <div class="col span-1-of-4 box">
-      <img src="resources/img/london.jpg" alt="London">
-      <h3>London</h3>
-      <div class="city-feature">
-      <i class="ion-ios-person icon-small"></i>
-      1200+ happy eaters
-      </div>
-      <div class="city-feature">
-      <i class="ion-ios-star icon-small"></i>
-      50+ top chefs
-      </div>
-      <div class="city-feature">
-      <i class="ion-social-twitter icon-small"></i>
-      <a href="#">@omnifood_london</a>
-      </div>
-      </div>
-      </div>
-      </section>
+            p
+              | Chuyển tiền theo hướng dẫn và đợi email xác nhận từ Spiderum trong vòng 24h
+          .works-step.clearfix
+            div 4
+            p
+              | Liên hệ ngay với chúng tôi qua fanpage Spiderum nếu bạn không nhận được email xác nhận đơn hàng hoặc xác nhận chuyển khoản trong vòng 24h
     section.section-testimonials
       .row
         h2 Our customers can't live without us (Cam nhan cua tac gia)
@@ -206,33 +192,41 @@ html(lang='en')
               | Milton Chapman
     section.section-plans#plans
       .row
-        h2 Start eating healthy today (Cac goi order)
+        h2 Đặt mua ngay
       .row
         .col.span-1-of-3
           .plan-box
             div
-              h3 Premium
+              h3 Spiderum Partner
               p.plan-price
-                | $399
-                span / month
-              p.plan-price-meal That's only 13.30$ per meal
+                | 2.000.000 VNĐ+
+              p.plan-price-meal.text-italic 3-5 đơn vị/cá nhân ủng hộ nhiều/sớm nhất
             div
               ul
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | 1 meal every day
+                  | 2 cuốn “Dăm ba cái tuổi trẻ”
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | Order 24/7
+                  | Thư cảm ơn từ Spiderum Team
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | Access to newest creations
+                  | 2 áo phông Spiderum
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | Free delivery
+                  | 2 sổ Spiderum
+                li
+                  i.ion-ios-checkmark-empty.icon-small
+                  | 2 postcard Spiderum
+                li
+                  i.ion-ios-checkmark-empty.icon-small
+                  | Miễn phí vận chuyển
+                li
+                  i.ion-ios-checkmark-empty.icon-small
+                  | Tên/logo doanh nghiệp/cá nhân xuất hiện trong phần tri ân đầu sách
             div
               .btn-wrapper
-                a.btn.btn-full(href='#', data-open-modal='#modal_1') Sign up now
+                a.btn.btn-full(href='#', data-open-modal='#modal_1') Mua ngay
                 .dropdown#modal_1
                   .dropdown-header
                     | Choose quantity, size and gender of your shirt(s)
@@ -261,51 +255,68 @@ html(lang='en')
         .col.span-1-of-3
           .plan-box
             div
-              h3 Pro
+              h3 Spiderum Gift Box
               p.plan-price
-                | $149
-                span / month
-              p.plan-price-meal That's only 14.90$ per meal
+                | 469.000 VNĐ
+              p.plan-price-meal &nbsp;
             div
               ul
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | 1 meal 10 days/month
+                  | 1 cuốn “Dăm ba cái tuổi trẻ”
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | Order 24/7
+                  | Thư cảm ơn từ Spiderum Team
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | Access to newest creations
+                  | 1 áo phông Spiderum
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | Free delivery
+                  | 1 sổ Spiderum
+                li
+                  i.ion-ios-checkmark-empty.icon-small
+                  | 1 postcard Spiderum
+                li
+                  i.ion-ios-checkmark-empty.icon-small
+                  | Miễn phí vận chuyển
+                li
+                  i.ion-ios-checkmark-empty.icon-small
+                  | Huy hiệu đặc biệt cho tài khoản trên Spiderum
             div
-              a.btn.btn-ghost(href='#') Sign up now
+              a.btn.btn-ghost(href='#') Mua ngay
         .col.span-1-of-3
           .plan-box
             div
-              h3 Starter
+              h3 Spiderum Book
               p.plan-price
-                | 19$
-                span / meal
+                | 169.000 VNĐ
               p.plan-price-meal  
             div
               ul
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | 1 meal
+                  | 1 cuốn “Dăm ba cái tuổi trẻ”
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | Order from 8 am to 12 pm
+                  | Thư cảm ơn từ Spiderum Team
                 li
-                  i.ion-ios-close-empty.icon-small
+                  i.ion-ios-close-empty.icon-small.text-danger
+                  | 1 áo phông Spiderum
+                li
+                  i.ion-ios-close-empty.icon-small.text-danger
+                  | 1 sổ Spiderum
+                li
+                  i.ion-ios-close-empty.icon-small.text-danger
+                  | 1 postcard Spiderum
                 li
                   i.ion-ios-checkmark-empty.icon-small
-                  | Free delivery
+                  | Miễn phí vận chuyển
+                li
+                  i.ion-ios-close-empty.icon-small.text-danger
+                  | Huy hiệu đặc biệt cho tài khoản trên Spiderum
             div
-              a.btn.btn-ghost(href='#') Sign up now
-    section.section-form
+              a.btn.btn-ghost(href='#') Mua ngay
+    //- section.section-form
       .row
         h2 We're happy to hear from you
       .row
@@ -345,36 +356,18 @@ html(lang='en')
         .col.span-1-of-2
           ul.footer-nav
             li
-              a(href='#') About us
-            li
-              a(href='#') Blog
+              a(href='https://spiderum.com') Website
             li
               a(href='#') Press
-            li
-              a(href='#') iOS App
-            li
-              a(href='#') Android App
         .col.span-1-of-2
           ul.social-links
             li
               a(href='#')
                 i.ion-social-facebook
-            li
-              a(href='#')
-                i.ion-social-twitter
-            li
-              a(href='#')
-                i.ion-social-googleplus
-            li
-              a(href='#')
-                i.ion-social-instagram
       .row
         p
-          | Copyright © 2015 by Omnifood. All rights reserved.
-    script(src='//cdn.jsdelivr.net/respond/1.4.2/respond.min.js')
-    script(src='//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js')
-    script(src='//cdn.jsdelivr.net/selectivizr/1.0.3b/selectivizr.min.js')
+          | Copyright © 2018 by Spiderum. All rights reserved.
 
-    // NOTE[TRUNG] JS file for animation
+    //- NOTE[TRUNG] JS file for animation
     script(src='/js/lib/jquery.min.js')
     script(src='/js/main.js')

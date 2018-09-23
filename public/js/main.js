@@ -5,20 +5,38 @@ $(document).ready(() => {
 
 });
 
-$("#goToPlans").click(function() {
+$('#goToAboutUs').click(() => {
   $([document.documentElement, document.body]).animate({
-    scrollTop: $("#plans").offset().top
+    scrollTop: $('#aboutUs').offset().top
+  }, 400);
+});
+
+$('#goToAuthors').click(() => {
+  $([document.documentElement, document.body]).animate({
+    scrollTop: $('#authors').offset().top
+  }, 800);
+});
+
+$('#goToInstruction').click(() => {
+  $([document.documentElement, document.body]).animate({
+    scrollTop: $('#instruction').offset().top
+  }, 1200);
+});
+
+$('#goToPlans').click(() => {
+  $([document.documentElement, document.body]).animate({
+    scrollTop: $('#plans').offset().top
   }, 1600);
 });
 
-$('[data-open-modal]').click(function(e) {
-  let target = $(this).attr('data-open-modal');
+$('[data-open-modal]').click((e) => {
+  const target = $(this).attr('data-open-modal');
   $(target).addClass('active');
   e.preventDefault();
 });
 
-$('[data-close-modal]').click(function(e) {
-  let target = $(this).attr('data-close-modal');
+$('[data-close-modal]').click((e) => {
+  const target = $(this).attr('data-close-modal');
   $(target).removeClass('active');
   e.preventDefault();
 });
