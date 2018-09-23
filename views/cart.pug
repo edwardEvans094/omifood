@@ -1,0 +1,132 @@
+doctype html
+html(lang='en')
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', type='text/css', href='vendors/css/normalize.css')
+    link(rel='stylesheet', type='text/css', href='vendors/css/grid.css')
+    link(rel='stylesheet', type='text/css', href='vendors/css/ionicons.min.css')
+    link(rel='stylesheet', type='text/css', href='resources/css/style.css')
+    link(rel='stylesheet', type='text/css', href='resources/css/queries.css')
+    link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic', rel='stylesheet', type='text/css')
+    meta(name='csrf-token', content=_csrf)
+    title Cart
+  body
+    section.section-cart
+      .row
+        h2 Your shopping cart
+      .row
+        table#shopping-cart-table
+          thead
+            tr
+              th.index.text-right #
+              th.name.text-left Name
+              th.price.text-right Price
+              th.quantity.text-center Quantity
+              th.subtotal.text-right Subtotal
+              th.actions.text-center Actions
+          tbody
+            tr
+              td.text-right 1
+              td.text-medium Book + Thank you Letter
+              td.text-right.text-medium.text-primary 149.000 vnd
+              td.text-center 2
+              td.text-right.text-medium.text-primary 298.000 vnd
+              td.text-center
+                a.btn.btn-danger Delete
+            tr
+              td.text-right 2
+              td.text-medium Giftbox: Book + Bookmark + Shirt + Notebook + Thank you Letter + Website Badge (free shipping)
+              td.text-right.text-medium.text-primary 469.000 vnd
+              td.text-center 1
+              td.text-right.text-medium.text-primary 469.000 vnd
+              td.text-center
+                a.btn.btn-danger Delete
+            tr
+              td.text-right 3
+              td.text-medium Book + Bookmark + Shirt + Thank you Letter
+              td.text-right.text-medium.text-primary 2.000.000 vnd
+              td.text-center 3
+              td.text-right.text-medium.text-primary 6.000.000 vnd
+              td.text-center
+                a.btn.btn-danger Delete
+          tfoot
+            tr
+              td.text-right(colspan='5')
+                strong Total
+                h4.text-primary 6.767.000 vnd
+    section.section-form
+      .row
+        h2 We're happy to hear from you
+      .row
+        form.contact-form(method='post', action='/api/save-order')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .row
+            .col.span-1-of-3
+              label(for='name') Name
+            .col.span-2-of-3
+              input#name(type='text', name='name', placeholder='Your name', required='')
+          .row
+            .col.span-1-of-3
+              label(for='username') Spiderum username
+            .col.span-2-of-3
+              input#name(type='text', name='username', placeholder='Your Spiderum username', required='')
+          .row
+            .col.span-1-of-3
+              label(for='email') Email
+            .col.span-2-of-3
+              input#email(type='email', name='email', placeholder='Your email', required='')
+          .row
+            .col.span-1-of-3
+              label Address
+            .col.span-2-of-3
+              textarea(name='message', placeholder='Your message')
+          .row
+            .col.span-1-of-3
+              label(for='find-us') Find us by
+            .col.span-2-of-3
+              select#find-us(name='find-us')
+                option(value='1', selected='') Facebook
+                option(value='2') Search engine
+                option(value='3') Spiderum
+                option(value='4') Friends
+                option(value='4') Other
+          .row
+            .col.span-1-of-3
+              label  
+            .col.span-2-of-3
+              input(type='submit', value='Send it!')
+    footer
+      .row
+        .col.span-1-of-2
+          ul.footer-nav
+            li
+              a(href='#') About us
+            li
+              a(href='#') Blog
+            li
+              a(href='#') Press
+            li
+              a(href='#') iOS App
+            li
+              a(href='#') Android App
+        .col.span-1-of-2
+          ul.social-links
+            li
+              a(href='#')
+                i.ion-social-facebook
+            li
+              a(href='#')
+                i.ion-social-twitter
+            li
+              a(href='#')
+                i.ion-social-googleplus
+            li
+              a(href='#')
+                i.ion-social-instagram
+      .row
+        p
+          | Copyright © 2015 by Omnifood. All rights reserved.
+
+    // NOTE[TRUNG] JS file for animation
+    script(src='/js/lib/jquery.min.js')
+    script(src='/js/main.js')
