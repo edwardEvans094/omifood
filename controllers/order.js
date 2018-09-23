@@ -1,78 +1,103 @@
 const mongoose = require('mongoose');
-const Checkit = require('checkit');
+const Boom = require('boom');
 const Order = require('../models/Order');
 const Product = require('../models/Product');
+const utils = require('../utils/utils');
+
+// const upload = multer({
+//   dest: TMP_DIR,
+//   // limits: { fileSize: 2 * 1024 * 1024 } /* limit 2Mb size */
+// });
+// var cpUpload = upload.single('linkupload');
 
 exports.saveOrder = (req, res) => res.send('order save successfull and will be processed!');
 
-exports.addOrder = (req, res) => {
-  const [err, params] = new Checkit({
-    spiderumName: ['required', 'string'],
-    email: 'string',
-    address: ['required', 'string'],
-    findUsBy: 'string',
-    productIds: 'array'
-  }).validateSync(req.body);
-
-  if (err) return res.send(err);
-
-
-  Product.find({
-    _id: params.productIds.map(id => mongoose.Types.ObjectId(id))
-  }, (err, products) => {
-    if (err || !products) return res.send('product not found!');
-
-    const newOrder = new Order({
-      spiderumUserName: params.spiderumName,
-      email: params.email,
-      address: params.address,
-      findUsBy: params.findUsBy,
-      productIds: params.productIds,
+exports.addOrder = async (req, res, next) => {
+  try {
+    const products = await Product.find({
+      _id: req.body.products.map(p => mongoose.Types.ObjectId(p._id))
+    }).exec();
+    if (!products) {
+      return Boom.badData('Sub-product not found');
+    }
+    let orderId = utils.randomAlphanumeric(15);
+    const foundOrder = await Order.find({ orderId }).exec();
+    if (foundOrder) {
+      orderId = utils.randomAlphanumeric(15);
+    }
+    const order = new Order({
+      orderId,
+      spiderumUserName: req.body.spiderumUserName,
+      email: req.body.email,
+      address: req.body.address,
+      findUsBy: req.body.findUsBy,
+      products: req.body.products,
+      shippingFee: req.body.shippingFee,
+      status: Order.OrderStatusEnum.WAITING_FOR_PAYMENT,
     });
-    newOrder.save(err => res.send(err));
-  });
+    const newOrder = await order.save();
+    return res.json(newOrder);
+  } catch (err) {
+    return next(err);
+  }
 };
 
 
-exports.editOrder = (req, res) => {
-  const [err, params] = new Checkit({
-    orderID: ['required', 'string'],
-    spiderumName: ['required', 'string'],
-    email: 'string',
-    address: ['required', 'string'],
-    findUsBy: 'string',
-    productIds: 'array'
-  }).validateSync(req.body);
+exports.editOrder = async (req, res, next) => {
+  try {
+    const products = await Product.find({
+      _id: req.body.products.map(p => mongoose.Types.ObjectId(p._id))
+    }).exec();
+    if (!products) {
+      return Boom.badData('Sub-product not found');
+    }
 
-  if (err) return res.send(err);
+    const order = await Order.findByIdAndUpdate(req.body._id, req.body).exec();
+    if (!order) {
+      return Boom.badData(`Order ${req.body.orderId} not found`);
+    }
 
-  Order.findById(params.orderID, (err, order) => {
-    if (err || !order) return res.send('order not found!');
+    // order.spiderumUserName = req.body.spiderumUserName;
+    // order.email = req.body.email || null;
+    // order.address = req.body.address || null;
+    // order.findUsBy = req.body.findUsBy || null;
+    // order.products = req.body.products || [];
 
-    Product.find({
-      _id: params.productIds.map(id => mongoose.Types.ObjectId(id))
-    }, (err, products) => {
-      if (err || !products) return res.send('product not found!');
+    // order.shippingFee = req.body.shippingFee || 0;
 
-      order.spiderumName = params.spiderumName || null;
-      order.email = params.email || null;
-      order.address = params.address || null;
-      order.findUsBy = params.findUsBy || null;
-      order.productIds = params.productIds || null;
-
-      order.save(err => res.send(err));
-    });
-  });
+    // const savedOrder = await order.save();
+    // return res.json(savedOrder);
+    return res.json(order);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-exports.removeOrder = (req, res) => {
-  const orderID = req.body.orderId;
-  Order.remove({ _id: orderID }, err => res.send(err));
+exports.removeOrder = async (req, res, next) => {
+  try {
+    await Order.remove({ orderId: req.body.orderId });
+    return res.json({ orderId: req.body.orderId });
+  } catch (err) {
+    return next(err);
+  }
 };
 
-exports.listAllOrder = (req, res) => {
-  Order.find({}, (err, orders) => {
-    if (err) return res.send(err);
-    return res.send(orders);
-  });
+exports.listAllOrder = async (req, res, next) => {
+  try {
+    const orders = Order.find({}).sort({ createdAt: -1 }).exec();
+    return res.json(orders);
+  } catch (err) {
+    return next(err);
+  }
 };
+
+// exports.getFileUpload = (req, res) => {
+//   res.render('api/upload', {
+//     title: 'File Upload'
+//   });
+// };
+
+// exports.postFileUpload = (req, res) => {
+//   req.flash('success', { msg: 'File was uploaded successfully.' });
+//   res.redirect('/api/upload');
+// };

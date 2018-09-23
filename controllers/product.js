@@ -8,7 +8,7 @@ exports.addProduct = async (req, res, next) => {
       name: req.body.name,
       isBundle: req.body.isBundle,
       price: req.body.price,
-      attributes: req.body.attributes
+      // attributes: req.body.attributes
       // productIds: req.body.productIds,
     });
 
@@ -40,7 +40,7 @@ exports.editProduct = async (req, res, next) => {
     product.name = req.body.name;
     product.isBundle = req.body.isBundle;
     product.price = req.body.price;
-    product.attributes = req.body.attributes;
+    // product.attributes = req.body.attributes;
     product.productIds = req.body.productIds;
 
     const savedProduct = await product.save();

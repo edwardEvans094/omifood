@@ -1,14 +1,14 @@
 
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
+const ProductSchema = new mongoose.Schema({
   name: { type: String, unique: true },
   isBunbdle: Boolean,
   price: mongoose.Schema.Types.Decimal128,
-  attributes: {
-    size: { type: String },
-    gender: { type: String, enum: ['M', 'F'] }
-  },
+  // attributes: {
+  //   size: { type: String },
+  //   gender: { type: String, enum: ['M', 'F'] }
+  // },
   productIds: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
@@ -19,6 +19,6 @@ const productSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-const Product = mongoose.model('Product', productSchema);
+const Product = mongoose.model('Product', ProductSchema);
 
 module.exports = Product;

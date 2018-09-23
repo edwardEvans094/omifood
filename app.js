@@ -188,10 +188,10 @@ app.get('/api/google-maps', apiController.getGoogleMaps);
 
 app.post('/api/save-order', orderController.saveOrder);
 
-app.post('/api/order/create', orderController.addOrder);
-app.post('/api/order/edit', orderController.editOrder);
-app.post('/api/order/remove', orderController.removeOrder);
-app.post('/api/order/list', orderController.listAllOrder);
+app.post('/api/order/create', validateRequest, orderController.addOrder);
+app.post('/api/order/edit', validateRequest, orderController.editOrder);
+app.post('/api/order/remove', validateRequest, orderController.removeOrder);
+app.get('/api/order/list', orderController.listAllOrder);
 
 app.post('/api/product/create', validateRequest, productController.addProduct);
 app.post('/api/product/edit', validateRequest, productController.editProduct);
