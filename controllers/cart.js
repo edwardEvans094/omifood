@@ -4,6 +4,6 @@
  */
 exports.renderCartPage = (req, res) => {
   res.render('cart', {
-    title: 'Cart'
+    title: 'Giỏ hàng'
   });
 };

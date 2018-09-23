@@ -1,372 +1,371 @@
-doctype html
-html(lang='en')
-  head
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', type='text/css', href='vendors/css/normalize.css')
-    link(rel='stylesheet', type='text/css', href='vendors/css/grid.css')
-    link(rel='stylesheet', type='text/css', href='vendors/css/ionicons.min.css')
-    link(rel='stylesheet', type='text/css', href='resources/css/style.css')
-    link(rel='stylesheet', type='text/css', href='resources/css/queries.css')
-    link(href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,300italic', rel='stylesheet', type='text/css')
+extends book-layout
 
-    link(rel='icon' href='resources/img/spiderum-logo.png' type='image/x-icon')
-
-    meta(name='csrf-token', content=_csrf)
-    title Spiderum Book
-  body
-    header
-      nav
+block content
+  header
+    nav
+      .row
+        a(href='/')
+          img.logo(src='resources/img/spiderum-logo.png', alt='Spiderum logo')
+        //- img.logo(src='resources/img/logo-white.png', alt='Omnifood logo')
+        //- img.logo-black(src='resources/img/logo.png', alt='Omnifood logo')
+        ul.main-nav
+          li
+            a#goToAboutUs(href='#aboutUs') Về chúng tôi
+          li
+            a#goToAuthors(href='#authors') Tác giả
+          li
+            a#goToInstruction(href='#instruction') Hướng dẫn
+          li
+            a#goToPlans(href='#plans') Đặt mua
+          li
+            a(href='/cart')
+              i.ion-ios-cart.icon-cart
+              | Giỏ hàng
+    .hero-text-box
+      h1
+        | DÀNH DĂM BA CÁI THANH XUÂN
+        br
+        | BÁN "DĂM BA CÁI TUỔI TRẺ"
+      a#buyNowBtn.btn.btn-full(href='#', data-tooltip='Only $5 one-time payment!') Đặt sách ngay
+      //- span (tin tưởng admin đẹp trai)
+      a#discoverBtn.btn.btn-ghost(href='#') Tìm hiểu tí đã
+      //- span (bọn này hay troll lắm)
+  section.section-features#aboutUs
+    .row
+      .gif
+        iframe.giphy-embed(src='https://giphy.com/embed/2Wh63HbZZY8D27cuDd' width='480' height='270' frameborder='0' allowfullscreen='')
+      //- h2 Get food fast — not fast food
+      h2 TỚI PHẦN NGHIÊM TÚC RỒI
+      p.long-copy
+        | Sau hơn hai năm hoạt động, từ một nhóm nho nhỏ ôm hoài bão to, Spiderum đã vươn mình phát triển trở thành Động Nhện Online lớn nhất Việt Nam (đố các bạn tìm ra cái Động Nhện nào khác đấy) với khoảng 25.000 thành viên, 10.000 bài viết, cùng 200.000 người truy cập mỗi tháng.
+      p.long-copy
+        | Thành công này, bên cạnh việc là nguồn động viên cực lớn, cũng đồng thời đặt ra những thách thức không nhỏ cho
+        span.text-bold  Spiderum Team:
+      p.long-copy.text-italic
+        | Phải làm gì để tri ân những tác giả đã và đang đóng góp những bài viết cực kỳ chất lượng trên Spiderum?
+      p.long-copy.text-italic
+        | Phải làm gì để phát triển và thu hút thêm nhiều tác giả mới với những bài viết đặc sắc, vốn là chất xúc tác biến Spiderum thành một không gian cực kỳ thú vị?
+      p.long-copy.text-italic
+        | Phải làm gì để Spiderum có thể phát triển bền vững, không ngừng nâng cấp, giới thiệu tính năng mới – trong khi vẫn tiếp tục nói “Không” với quảng cáo phản cảm nhằm tối ưu hóa trải nghiệm người dùng?
+      p.long-copy.text-italic
+        | Phải làm gì để tăng cường sự hiện diện và ảnh hưởng của Spiderum trong đời sống thực, thông qua những vật phẩm và sự kiện hữu hình?
+      p.long-copy &hellip;
+          //- Phải làm gì để tri ân những tác giả đã và đang đóng góp những bài viết cực kỳ chất lượng trên Spiderum?
+          //- Phải làm gì để phát triển và thu hút thêm nhiều tác giả mới với những bài viết đặc sắc, vốn là chất xúc tác biến Spiderum thành một không gian cực kỳ thú vị?
+          //- Phải làm gì để Spiderum có thể phát triển bền vững, không ngừng nâng cấp, giới thiệu tính năng mới – trong khi vẫn tiếp tục nói “Không” với quảng cáo phản cảm nhằm tối ưu hóa trải nghiệm người dùng?
+          //- Phải làm gì để tăng cường sự hiện diện và ảnh hưởng của Spiderum trong đời sống thực, thông qua những vật phẩm và sự kiện hữu hình?
+          //- …
+          //- Thứ bạn đang thấy ngay lúc này chính là bước đi đầu tiên của chúng tôi trên hành trình tìm kiếm câu trả lời thỏa đáng cho tất cả những thắc mắc kể trên.
+          //- Còn bạn, bạn sẽ bước tiếp cùng chúng tôi trên hành trình đầy thử thách nhưng không kém phần thú vị của Spiderum trong năm 2019 chứ?
+      p.long-copy
+        | Thứ bạn đang thấy ngay lúc này chính là bước đi đầu tiên của chúng tôi trên hành trình tìm kiếm câu trả lời thỏa đáng cho tất cả những thắc mắc kể trên.
+      p.long-copy
+        | Còn bạn, bạn sẽ bước tiếp cùng chúng tôi trên hành trình đầy thử thách nhưng không kém phần thú vị của Spiderum trong năm 2019 chứ?
+  section.section-meals
+    ul.meals-showcase.clearfix
+      li
+        figure.meal-photo
+          img(src='resources/img/9.jpg', alt='Spiderum book 1')
+      li
+        figure.meal-photo
+          img(src='resources/img/10.jpg', alt='Spiderum book 2')
+      li
+        figure.meal-photo
+          img(src='resources/img/11.jpg', alt='Spiderum book 3')
+      li
+        figure.meal-photo
+          img(src='resources/img/12.jpg', alt='Spiderum book 4')
+  section.about
+    .row
+      h2
+        | Về Dăm ba cái tuổi trẻ
+      p.long-copy
+        | “Dăm ba cái tuổi trẻ” là dự án đầu tiên đánh dấu bước chuyển mình của Spiderum từ một nền tảng online thuần túy trở thành một cộng đồng hoạt động tích cực cả online lẫn offline, với mục tiêu gắn kết và tạo giá trị tích cực cho bộ phận tri thức trẻ tại Việt Nam.
+      p.long-copy
+        | Cuốn sách bạn sẽ cầm trên tay là một tuyển tập gồm 28 bài viết do Spiderum Team tuyển chọn kỹ càng trước khi đầu tư biên tập và vẽ minh họa lại. “Dăm ba cái tuổi trẻ” gồm 4 phần, với chủ đề xuyên suốt xoay quanh những trải nghiệm, suy ngẫm và khúc mắc của tuổi trẻ.
+      p.long-copy
+        | Sau ấn phẩm này, Spiderum Team hy vọng có thể tiếp tục duy trì xuất bản các ấn phẩm khác với nội dung được đóng góp bởi cộng đồng.
+  section.authors#authors
+    h2 Các tác giả có bài viết trong “Dăm ba cái tuổi trẻ”
+    .row
+      .col.span-1-of-4.box
+        //- i.ion-ios-infinite-outline.icon-big
+        //- h3 Up to 365 days/year
+        p Hạnh Dung
+        p Hexpion
+        p BlackMeow
+        p Trịnh Nhật Tuân
+        p Yo Le
+      .col.span-1-of-4.box
+        //- i.ion-ios-stopwatch-outline.icon-big
+        //- h3 Ready in 20 minutes
+        p Elbe040
+        p Vũ Phạm Lan Anh
+        p TheMerc
+        p Nguyễn Bảo Trung
+      .col.span-1-of-4.box
+        //- i.ion-ios-nutrition-outline.icon-big
+        //- h3 100% organic
+        p Lưu Phong Trường
+        p Hùng Vũ
+        p Nguyễn Huỳnh Nhất Bảo
+        p Loveless
+      .col.span-1-of-4.box
+        //- i.ion-ios-cart-outline.icon-big
+        //- h3 Order anything
+        p Huskywannafly
+        p Nga Levi
+        p Gấu SP
+        p Giấy
+    .row
+      p.long-copy.note.text-italic
+        | Ngoài khoản nhuận bút tương ứng với số bài viết được lựa chọn và số lượng sách đến tay người đọc, các tác giả còn nhận thêm một Spiderum Gift Box, đồng thời được vinh danh và tri ân trực tiếp trong sách.
+  section.giftboxes
+    ul.meals-showcase.clearfix
+      li
+        figure.meal-photo
+          img(src='resources/img/13.jpg', alt='Giftbox 1')
+      li
+        figure.meal-photo
+          img(src='resources/img/14.jpg', alt='Giftbox 2')
+      li
+        figure.meal-photo
+          img(src='resources/img/15.jpg', alt='Giftbox 3')
+      li
+        figure.meal-photo
+          img(src='resources/img/16.jpg', alt='Giftbox 4')
+  section.section-steps#instruction
+    .row
+      h2 Các bước đặt order
+    .row
+      .steps-box
+        .works-step.clearfix
+          div 1
+          p
+            | Chọn và điền chính xác thông tin đơn hàng theo hướng dẫn
+        .works-step.clearfix
+          div 2
+          p
+            | Nhận email xác nhận kèm hướng dẫn chuyển khoản tương ứng với order của bạn
+        .works-step.clearfix
+          div 3
+          p
+            | Chuyển tiền theo hướng dẫn và đợi email xác nhận từ Spiderum trong vòng 24h
+        .works-step.clearfix
+          div 4
+          p
+            | Liên hệ ngay với chúng tôi qua fanpage Spiderum nếu bạn không nhận được email xác nhận đơn hàng hoặc xác nhận chuyển khoản trong vòng 24h
+  section.section-testimonials
+    .row
+      h2 Our customers can't live without us (Cam nhan cua tac gia)
+    .row
+      .col.span-1-of-3
+        blockquote
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          cite
+            img(src='resources/img/customer-1.jpg')
+            | Alberto Duncan
+      .col.span-1-of-3
+        blockquote
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          cite
+            img(src='resources/img/customer-2.jpg')
+            | Joana Silva
+      .col.span-1-of-3
+        blockquote
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          cite
+            img(src='resources/img/customer-3.jpg')
+            | Milton Chapman
+  section.section-plans#plans
+    .row
+      h2 Đặt mua ngay
+    .row
+      .col.span-1-of-3
+        .plan-box
+          div
+            h3 Spiderum Partner
+            p.plan-price
+              | 2.000.000 VNĐ+
+            p.plan-price-meal.text-italic 3-5 đơn vị/cá nhân ủng hộ nhiều/sớm nhất
+          div
+            ul
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 2 cuốn “Dăm ba cái tuổi trẻ”
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | Thư cảm ơn từ Spiderum Team
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 2 áo phông Spiderum
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 2 sổ Spiderum
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 2 postcard Spiderum
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | Miễn phí vận chuyển
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | Tên/logo doanh nghiệp/cá nhân xuất hiện trong phần tri ân đầu sách
+          div
+            .btn-wrapper
+              a.btn.btn-full(href='#', data-open-modal='#modal_1') Mua ngay
+              .dropdown#modal_1
+                .dropdown-header
+                  | Bạn vui lòng liên hệ trực tiếp admin tại
+                  |
+                  a(href='https://fb.com/spiderum') đây
+                //-   .close(data-close-modal='#modal_1')
+                //-     i.ion-ios-close
+                //- .dropdown-body
+                //-   #items
+                //-     // After clicked on 'Add option' button, we should append
+                //-     // this element .item-option to #items
+                //-     .item-option
+                //-       input.quantity(type='number', min='1', step='1', value='1')
+                //-       select.size
+                //-         option(value='S') S
+                //-         option(value='M') M
+                //-         option(value='L') L
+                //-         option(value='XL') XL
+                //-       select.gender
+                //-         option(value='F') Female
+                //-         option(value='M') Male
+                //-   a.btn.btn-ghost.item-add(href='#')
+                //-     | Add option
+                //-     |
+                //-     i.ion-android-add-circle
+                //- .dropdown-footer
+                //-   input.submit(type='submit', value='Submit')
+      .col.span-1-of-3
+        .plan-box
+          div
+            h3 Spiderum Gift Box
+            p.plan-price
+              | 469.000 VNĐ
+            p.plan-price-meal &nbsp;
+          div
+            ul
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 1 cuốn “Dăm ba cái tuổi trẻ”
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | Thư cảm ơn từ Spiderum Team
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 1 áo phông Spiderum
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 1 sổ Spiderum
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 1 postcard Spiderum
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | Miễn phí vận chuyển
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | Huy hiệu đặc biệt cho tài khoản trên Spiderum
+          div
+            .btn-wrapper
+              a.btn.btn-ghost(href='#', data-open-modal='#modal_2') Mua ngay
+              .dropdown#modal_2
+                .dropdown-header
+                  | Chọn số lượng, kích cỡ, và loại áo (nam/nữ). Mỗi một giftbox chỉ bao gồm 1 áo
+                  .close(data-close-modal='#modal_2')
+                    i.ion-ios-close
+                .dropdown-body
+                  #items
+                    //- After clicked on 'Add option' button, we should append
+                    //- this element .item-option to #items
+                    .item-option
+                      input.quantity(type='number', min='1', step='1', value='1')
+                      select.size
+                        option(value='S') S
+                        option(value='M') M
+                        option(value='L') L
+                        option(value='XL') XL
+                      select.gender
+                        option(value='F') Nữ
+                        option(value='M') Nam
+                  a#addItemBtn.btn.btn-ghost.item-add(href='#')
+                    | Thêm
+                    |
+                    i.ion-android-add-circle.icon-add
+                .dropdown-footer
+                  input.submit(type='submit', value='Submit')
+      .col.span-1-of-3
+        .plan-box
+          div
+            h3 Spiderum Book
+            p.plan-price
+              | 169.000 VNĐ
+            p.plan-price-meal  
+          div
+            ul
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | 1 cuốn “Dăm ba cái tuổi trẻ”
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | Thư cảm ơn từ Spiderum Team
+              li
+                i.ion-ios-close-empty.icon-small.text-danger
+                | 1 áo phông Spiderum
+              li
+                i.ion-ios-close-empty.icon-small.text-danger
+                | 1 sổ Spiderum
+              li
+                i.ion-ios-close-empty.icon-small.text-danger
+                | 1 postcard Spiderum
+              li
+                i.ion-ios-checkmark-empty.icon-small
+                | Miễn phí vận chuyển
+              li
+                i.ion-ios-close-empty.icon-small.text-danger
+                | Huy hiệu đặc biệt cho tài khoản trên Spiderum
+          div
+            a.btn.btn-ghost(href='#') Mua ngay
+  //- section.section-form
+    .row
+      h2 We're happy to hear from you
+    .row
+      form.contact-form(method='post', action='/api/save-order')
+        input(type='hidden', name='_csrf', value=_csrf)
         .row
-          a(href='/')
-            img.logo(src='resources/img/spiderum-logo.png', alt='Spiderum logo')
-          //- img.logo(src='resources/img/logo-white.png', alt='Omnifood logo')
-          //- img.logo-black(src='resources/img/logo.png', alt='Omnifood logo')
-          ul.main-nav
-            li
-              a#goToAboutUs(href='#aboutUs') Về chúng tôi
-            li
-              a#goToAuthors(href='#authors') Tác giả
-            li
-              a#goToInstruction(href='#instruction') Hướng dẫn
-            li
-              a#goToPlans(href='#plans') Đặt mua
-            li
-              a(href='/cart')
-                i.ion-ios-cart.icon-cart
-                | Giỏ hàng
-      .hero-text-box
-        h1
-          | DÀNH DĂM BA CÁI THANH XUÂN
-          br
-          | BÁN "DĂM BA CÁI TUỔI TRẺ"
-        a.btn.btn-full(href='#') Đặt sách ngay
-        //- span (tin tưởng admin đẹp trai)
-        a.btn.btn-ghost(href='#') Tìm hiểu tí đã
-        //- span (bọn này hay troll lắm)
-    section.section-features#aboutUs
-      .row
-        .gif
-          iframe.giphy-embed(src='https://giphy.com/embed/2Wh63HbZZY8D27cuDd' width='480' height='270' frameborder='0' allowfullscreen='')
-        //- h2 Get food fast — not fast food
-        h2 TỚI PHẦN NGHIÊM TÚC RỒI
-        p.long-copy
-          | Sau hơn hai năm hoạt động, từ một nhóm nho nhỏ ôm hoài bão to, Spiderum đã vươn mình phát triển trở thành Động Nhện Online lớn nhất Việt Nam (đố các bạn tìm ra cái Động Nhện nào khác đấy) với khoảng 25.000 thành viên, 10.000 bài viết, cùng 200.000 người truy cập mỗi tháng.
-        p.long-copy
-          | Thành công này, bên cạnh việc là nguồn động viên cực lớn, cũng đồng thời đặt ra những thách thức không nhỏ cho
-          span.text-bold  Spiderum Team:
-        p.long-copy.text-italic
-          | Phải làm gì để tri ân những tác giả đã và đang đóng góp những bài viết cực kỳ chất lượng trên Spiderum?
-        p.long-copy.text-italic
-          | Phải làm gì để phát triển và thu hút thêm nhiều tác giả mới với những bài viết đặc sắc, vốn là chất xúc tác biến Spiderum thành một không gian cực kỳ thú vị?
-        p.long-copy.text-italic
-          | Phải làm gì để Spiderum có thể phát triển bền vững, không ngừng nâng cấp, giới thiệu tính năng mới – trong khi vẫn tiếp tục nói “Không” với quảng cáo phản cảm nhằm tối ưu hóa trải nghiệm người dùng?
-        p.long-copy.text-italic
-          | Phải làm gì để tăng cường sự hiện diện và ảnh hưởng của Spiderum trong đời sống thực, thông qua những vật phẩm và sự kiện hữu hình?
-        p.long-copy &hellip;
-            //- Phải làm gì để tri ân những tác giả đã và đang đóng góp những bài viết cực kỳ chất lượng trên Spiderum?
-            //- Phải làm gì để phát triển và thu hút thêm nhiều tác giả mới với những bài viết đặc sắc, vốn là chất xúc tác biến Spiderum thành một không gian cực kỳ thú vị?
-            //- Phải làm gì để Spiderum có thể phát triển bền vững, không ngừng nâng cấp, giới thiệu tính năng mới – trong khi vẫn tiếp tục nói “Không” với quảng cáo phản cảm nhằm tối ưu hóa trải nghiệm người dùng?
-            //- Phải làm gì để tăng cường sự hiện diện và ảnh hưởng của Spiderum trong đời sống thực, thông qua những vật phẩm và sự kiện hữu hình?
-            //- …
-            //- Thứ bạn đang thấy ngay lúc này chính là bước đi đầu tiên của chúng tôi trên hành trình tìm kiếm câu trả lời thỏa đáng cho tất cả những thắc mắc kể trên.
-            //- Còn bạn, bạn sẽ bước tiếp cùng chúng tôi trên hành trình đầy thử thách nhưng không kém phần thú vị của Spiderum trong năm 2019 chứ?
-        p.long-copy
-          | Thứ bạn đang thấy ngay lúc này chính là bước đi đầu tiên của chúng tôi trên hành trình tìm kiếm câu trả lời thỏa đáng cho tất cả những thắc mắc kể trên.
-        p.long-copy
-          | Còn bạn, bạn sẽ bước tiếp cùng chúng tôi trên hành trình đầy thử thách nhưng không kém phần thú vị của Spiderum trong năm 2019 chứ?
-    section.section-meals
-      ul.meals-showcase.clearfix
-        li
-          figure.meal-photo
-            img(src='resources/img/9.jpg', alt='Spiderum book 1')
-        li
-          figure.meal-photo
-            img(src='resources/img/10.jpg', alt='Spiderum book 2')
-        li
-          figure.meal-photo
-            img(src='resources/img/11.jpg', alt='Spiderum book 3')
-        li
-          figure.meal-photo
-            img(src='resources/img/12.jpg', alt='Spiderum book 4')
-    section.about
-      .row
-        h2
-          | Về Dăm ba cái tuổi trẻ
-        p.long-copy
-          | “Dăm ba cái tuổi trẻ” là dự án đầu tiên đánh dấu bước chuyển mình của Spiderum từ một nền tảng online thuần túy trở thành một cộng đồng hoạt động tích cực cả online lẫn offline, với mục tiêu gắn kết và tạo giá trị tích cực cho bộ phận tri thức trẻ tại Việt Nam.
-        p.long-copy
-          | Cuốn sách bạn sẽ cầm trên tay là một tuyển tập gồm 28 bài viết do Spiderum Team tuyển chọn kỹ càng trước khi đầu tư biên tập và vẽ minh họa lại. “Dăm ba cái tuổi trẻ” gồm 4 phần, với chủ đề xuyên suốt xoay quanh những trải nghiệm, suy ngẫm và khúc mắc của tuổi trẻ.
-        p.long-copy
-          | Sau ấn phẩm này, Spiderum Team hy vọng có thể tiếp tục duy trì xuất bản các ấn phẩm khác với nội dung được đóng góp bởi cộng đồng.
-    section.authors#authors
-      h2 Các tác giả có bài viết trong “Dăm ba cái tuổi trẻ”
-      .row
-        .col.span-1-of-4.box
-          //- i.ion-ios-infinite-outline.icon-big
-          //- h3 Up to 365 days/year
-          p Hạnh Dung
-          p Hexpion
-          p BlackMeow
-          p Trịnh Nhật Tuân
-          p Yo Le
-        .col.span-1-of-4.box
-          //- i.ion-ios-stopwatch-outline.icon-big
-          //- h3 Ready in 20 minutes
-          p Elbe040
-          p Vũ Phạm Lan Anh
-          p TheMerc
-          p Nguyễn Bảo Trung
-        .col.span-1-of-4.box
-          //- i.ion-ios-nutrition-outline.icon-big
-          //- h3 100% organic
-          p Lưu Phong Trường
-          p Hùng Vũ
-          p Nguyễn Huỳnh Nhất Bảo
-          p Loveless
-        .col.span-1-of-4.box
-          //- i.ion-ios-cart-outline.icon-big
-          //- h3 Order anything
-          p Huskywannafly
-          p Nga Levi
-          p Gấu SP
-          p Giấy
-      .row
-        p.long-copy.note.text-italic
-          | Ngoài khoản nhuận bút tương ứng với số bài viết được lựa chọn và số lượng sách đến tay người đọc, các tác giả còn nhận thêm một Spiderum Gift Box, đồng thời được vinh danh và tri ân trực tiếp trong sách.
-    section.giftboxes
-      ul.meals-showcase.clearfix
-        li
-          figure.meal-photo
-            img(src='resources/img/13.jpg', alt='Giftbox 1')
-        li
-          figure.meal-photo
-            img(src='resources/img/14.jpg', alt='Giftbox 2')
-        li
-          figure.meal-photo
-            img(src='resources/img/15.jpg', alt='Giftbox 3')
-        li
-          figure.meal-photo
-            img(src='resources/img/16.jpg', alt='Giftbox 4')
-    section.section-steps#instruction
-      .row
-        h2 Các bước đặt order
-      .row
-        .steps-box
-          .works-step.clearfix
-            div 1
-            p
-              | Chọn và điền chính xác thông tin đơn hàng theo hướng dẫn
-          .works-step.clearfix
-            div 2
-            p
-              | Nhận email xác nhận kèm hướng dẫn chuyển khoản tương ứng với order của bạn
-          .works-step.clearfix
-            div 3
-            p
-              | Chuyển tiền theo hướng dẫn và đợi email xác nhận từ Spiderum trong vòng 24h
-          .works-step.clearfix
-            div 4
-            p
-              | Liên hệ ngay với chúng tôi qua fanpage Spiderum nếu bạn không nhận được email xác nhận đơn hàng hoặc xác nhận chuyển khoản trong vòng 24h
-    section.section-testimonials
-      .row
-        h2 Our customers can't live without us (Cam nhan cua tac gia)
-      .row
-        .col.span-1-of-3
-          blockquote
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            cite
-              img(src='resources/img/customer-1.jpg')
-              | Alberto Duncan
-        .col.span-1-of-3
-          blockquote
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            cite
-              img(src='resources/img/customer-2.jpg')
-              | Joana Silva
-        .col.span-1-of-3
-          blockquote
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            cite
-              img(src='resources/img/customer-3.jpg')
-              | Milton Chapman
-    section.section-plans#plans
-      .row
-        h2 Đặt mua ngay
-      .row
-        .col.span-1-of-3
-          .plan-box
-            div
-              h3 Spiderum Partner
-              p.plan-price
-                | 2.000.000 VNĐ+
-              p.plan-price-meal.text-italic 3-5 đơn vị/cá nhân ủng hộ nhiều/sớm nhất
-            div
-              ul
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 2 cuốn “Dăm ba cái tuổi trẻ”
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | Thư cảm ơn từ Spiderum Team
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 2 áo phông Spiderum
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 2 sổ Spiderum
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 2 postcard Spiderum
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | Miễn phí vận chuyển
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | Tên/logo doanh nghiệp/cá nhân xuất hiện trong phần tri ân đầu sách
-            div
-              .btn-wrapper
-                a.btn.btn-full(href='#', data-open-modal='#modal_1') Mua ngay
-                .dropdown#modal_1
-                  .dropdown-header
-                    | Choose quantity, size and gender of your shirt(s)
-                    .close(data-close-modal='#modal_1')
-                      i.ion-ios-close
-                  .dropdown-body
-                    #items
-                      // After clicked on 'Add option' button, we should append
-                      // this element .item-option to #items
-                      .item-option
-                        input.quantity(type='number', min='1', step='1', value='1')
-                        select.size
-                          option(value='S') S
-                          option(value='M') M
-                          option(value='L') L
-                          option(value='XL') XL
-                        select.gender
-                          option(value='F') Female
-                          option(value='M') Male
-                    a.btn.btn-ghost.item-add(href='#')
-                      | Add option
-                      |
-                      i.ion-android-add-circle
-                  .dropdown-footer
-                    input.submit(type='submit', value='Submit')
-        .col.span-1-of-3
-          .plan-box
-            div
-              h3 Spiderum Gift Box
-              p.plan-price
-                | 469.000 VNĐ
-              p.plan-price-meal &nbsp;
-            div
-              ul
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 1 cuốn “Dăm ba cái tuổi trẻ”
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | Thư cảm ơn từ Spiderum Team
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 1 áo phông Spiderum
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 1 sổ Spiderum
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 1 postcard Spiderum
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | Miễn phí vận chuyển
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | Huy hiệu đặc biệt cho tài khoản trên Spiderum
-            div
-              a.btn.btn-ghost(href='#') Mua ngay
-        .col.span-1-of-3
-          .plan-box
-            div
-              h3 Spiderum Book
-              p.plan-price
-                | 169.000 VNĐ
-              p.plan-price-meal  
-            div
-              ul
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | 1 cuốn “Dăm ba cái tuổi trẻ”
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | Thư cảm ơn từ Spiderum Team
-                li
-                  i.ion-ios-close-empty.icon-small.text-danger
-                  | 1 áo phông Spiderum
-                li
-                  i.ion-ios-close-empty.icon-small.text-danger
-                  | 1 sổ Spiderum
-                li
-                  i.ion-ios-close-empty.icon-small.text-danger
-                  | 1 postcard Spiderum
-                li
-                  i.ion-ios-checkmark-empty.icon-small
-                  | Miễn phí vận chuyển
-                li
-                  i.ion-ios-close-empty.icon-small.text-danger
-                  | Huy hiệu đặc biệt cho tài khoản trên Spiderum
-            div
-              a.btn.btn-ghost(href='#') Mua ngay
-    //- section.section-form
-      .row
-        h2 We're happy to hear from you
-      .row
-        form.contact-form(method='post', action='/api/save-order')
-          input(type='hidden', name='_csrf', value=_csrf)
-          .row
-            .col.span-1-of-3
-              label(for='name') Name
-            .col.span-2-of-3
-              input#name(type='text', name='name', placeholder='Your name', required='')
-          .row
-            .col.span-1-of-3
-              label(for='email') Email
-            .col.span-2-of-3
-              input#email(type='email', name='email', placeholder='Your email', required='')
-          .row
-            .col.span-1-of-3
-              label Address
-            .col.span-2-of-3
-              textarea(name='message', placeholder='Your message')
-          .row
-            .col.span-1-of-3
-              label(for='find-us') Combo
-            .col.span-2-of-3
-              select#find-us(name='find-us')
-                option(value='1', selected='') Combo book and gift box
-                option(value='2') Combo book and bookmark
-                option(value='3') Combo book and condom
-                option(value='4') Just comdon
-          .row
-            .col.span-1-of-3
-              label  
-            .col.span-2-of-3
-              input(type='submit', value='Send it!')
-    footer
-      .row
-        .col.span-1-of-2
-          ul.footer-nav
-            li
-              a(href='https://spiderum.com') Website
-            li
-              a(href='#') Press
-        .col.span-1-of-2
-          ul.social-links
-            li
-              a(href='#')
-                i.ion-social-facebook
-      .row
-        p
-          | Copyright © 2018 by Spiderum. All rights reserved.
+          .col.span-1-of-3
+            label(for='name') Name
+          .col.span-2-of-3
+            input#name(type='text', name='name', placeholder='Your name', required='')
+        .row
+          .col.span-1-of-3
+            label(for='email') Email
+          .col.span-2-of-3
+            input#email(type='email', name='email', placeholder='Your email', required='')
+        .row
+          .col.span-1-of-3
+            label Address
+          .col.span-2-of-3
+            textarea(name='message', placeholder='Your message')
+        .row
+          .col.span-1-of-3
+            label(for='find-us') Combo
+          .col.span-2-of-3
+            select#find-us(name='find-us')
+              option(value='1', selected='') Combo book and gift box
+              option(value='2') Combo book and bookmark
+              option(value='3') Combo book and condom
+              option(value='4') Just comdon
+        .row
+          .col.span-1-of-3
+            label  
+          .col.span-2-of-3
+            input(type='submit', value='Send it!')
 
     //- NOTE[TRUNG] JS file for animation
     script(src='/js/lib/jquery.min.js')

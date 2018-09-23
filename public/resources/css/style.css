@@ -25,6 +25,15 @@ body {
     overflow-x: hidden;
 }
 
+/* blockquote {
+    background: #F5F5F6 url(/resources/img/quote.svg) top 15px left 15px/22px no-repeat;
+    font-style: italic;
+    color: #555;
+    padding: 15px 15px 15px 40px;
+    border-left: 4px solid #0099DF;
+    margin: 30px 0;
+} */
+
 .clearfix {zoom: 1;}
 .clearfix:after {
     content: '.';
@@ -136,6 +145,10 @@ i {
     line-height: 120%;
     vertical-align: middle;
     margin-top: -5px;
+}
+
+.icon-add {
+    padding-right: 0;
 }
 
 .icon-cart {
@@ -326,6 +339,10 @@ header {
 
 .section-features .row h2:after {
     content: unset;
+}
+
+.section-form {
+    padding: 0 0 80px 0;
 }
 
 
