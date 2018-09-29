@@ -101,3 +101,15 @@ exports.listAllOrder = async (req, res, next) => {
 //   req.flash('success', { msg: 'File was uploaded successfully.' });
 //   res.redirect('/api/upload');
 // };
+
+exports.addToCart = async (req, res, next) => {
+  try {
+    const newCart = req.body;
+    const currentCarts = req.session.carts;
+    const allCarts = currentCarts && currentCarts.length ? [...newCart.cart, ...currentCarts] : newCart.cart;
+    req.session.carts = allCarts;
+    return res.json({ carts: allCarts });
+  } catch (error) {
+    return res.next(error);
+  }
+};

@@ -19,6 +19,7 @@ block content
             a#goToPlans(href='#plans') Đặt mua
           li
             a(href='/cart')
+              span#cartsNumber
               i.ion-ios-cart.icon-cart
               | Giỏ hàng
     .hero-text-box
@@ -274,7 +275,8 @@ block content
           div
             .btn-wrapper
               a.btn.btn-ghost(href='#', data-open-modal='#modal_2') Mua ngay
-              .dropdown#modal_2
+              form.dropdown#modal_2
+                input(type='hidden', name='box2_csrf', value=_csrf)
                 .dropdown-header
                   | Chọn số lượng, kích cỡ, và loại áo (nam/nữ). Mỗi một giftbox chỉ bao gồm 1 áo
                   .close(data-close-modal='#modal_2')
@@ -284,13 +286,13 @@ block content
                     //- After clicked on 'Add option' button, we should append
                     //- this element .item-option to #items
                     .item-option
-                      input.quantity(type='number', min='1', step='1', value='1')
-                      select.size
+                      input.quantity(type='number', name="box2_quantity", min='1', step='1', value='1')
+                      select.size(name="box2_size")
                         option(value='S') S
                         option(value='M') M
                         option(value='L') L
                         option(value='XL') XL
-                      select.gender
+                      select.gender(name="box2_gender")
                         option(value='F') Nữ
                         option(value='M') Nam
                   a#addItemBtn.btn.btn-ghost.item-add(href='#')
@@ -330,7 +332,21 @@ block content
                 i.ion-ios-close-empty.icon-small.text-danger
                 | Huy hiệu đặc biệt cho tài khoản trên Spiderum
           div
-            a.btn.btn-ghost(href='#') Mua ngay
+            .btn-wrapper
+              a.btn.btn-ghost(href='#', data-open-modal='#modal_3') Mua ngay
+              form.dropdown#modal_3
+                input(type='hidden', name='type', value=3)
+                input(type='hidden', name='_csrf', value=_csrf)
+                .dropdown-header
+                  | Chọn số lượng:
+                  .close(data-close-modal='#modal_3')
+                    i.ion-ios-close
+                .dropdown-body
+                  #items
+                    .item-option
+                      input.quantity(type='number', name="quantity", min='1', step='1', value='1')
+                .dropdown-footer
+                  input.submit(type='submit', value='Submit')
   //- section.section-form
     .row
       h2 We're happy to hear from you

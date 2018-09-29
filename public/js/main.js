@@ -42,18 +42,57 @@ $(document).ready(() => {
     const items = $('#items');
     const itemTemplate =
       '<div class="item-option">' +
-        '<input class="quantity" type="number" min="1" step="1" value="1">' +
-        '<select class="size">' +
+        '<input class="quantity" name="box2_quantity" type="number" min="1" step="1" value="1">' +
+        '<select class="size" name="box2_size">' +
           '<option value="S">S</option>' +
           '<option value="M">M</option>' +
           '<option value="L">L</option>' +
           '<option value="XL">XL</option>' +
         '</select>' +
-        '<select class="gender">' +
+        '<select class="gender" name="box2_gender">' +
           '<option value="F">Nữ</option>' +
           '<option value="M">Nam</option>' +
         '</select>' +
       '</div>';
     items.append(itemTemplate);
+  });
+
+  $('#modal_2').submit((event) => {
+    event.preventDefault();
+
+    const values = [];
+    // $.each($('#modal_2').serializeArray(), (i, field) => {
+    //   values[field.name] = field.value;
+    // });
+    const csrf = $("input[name='box2_csrf']").val();
+
+    const quantity = $("input[name='box2_quantity']")
+      .map(function () { return $(this).val(); }).get();
+
+    const size = $("select[name='box2_size']")
+      .map(function () { return $(this).val(); }).get();
+
+    const gender = $("select[name='box2_gender']")
+      .map(function () { return $(this).val(); }).get();
+
+    quantity.map((v, i) => {
+      values[i] = {};
+      values[i].quantity = quantity[i];
+      values[i].size = size[i];
+      values[i].gender = gender[i];
+      values[i].type = 2;
+    });
+
+    $.post('api/order/add-to-cart', {
+      cart: values,
+      _csrf: csrf
+    })
+      .done((data) => {
+        // console.log(data);
+        alert('Đã được thêm vào giỏ hàng');
+        if (data.carts) {
+          $('#cartsNumber').html(data.carts.length);
+        }
+      });
   });
 });
