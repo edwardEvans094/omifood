@@ -20,6 +20,8 @@ block content
           li
             a(href='/cart')
               span#cartsNumber
+              if allCarts.length
+                | #{allCarts.length}
               i.ion-ios-cart.icon-cart
               | Giỏ hàng
     .hero-text-box
