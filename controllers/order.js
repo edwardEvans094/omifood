@@ -110,6 +110,18 @@ exports.addToCart = async (req, res, next) => {
     req.session.carts = allCarts;
     return res.json({ carts: allCarts });
   } catch (error) {
-    return res.next(error);
+    return next(error);
+  }
+};
+
+exports.removeFromCart = async (req, res, next) => {
+  try {
+    const cartId = req.body.cardId;
+    const allCarts = req.session.carts;
+    allCarts.splice(cartId, 1);
+    req.session.carts = allCarts;
+    return res.json({ carts: allCarts });
+  } catch (error) {
+    return next(error);
   }
 };

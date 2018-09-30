@@ -1,6 +1,35 @@
 extends book-layout
-
 block content
+  -
+    var box1Price = 2000000
+    var box2Price = 469000
+    var box3Price = 169000
+
+    var box1Name = 'Book + Bookmark + Shirt + Notebook + Thank you Letter + Website Badge (free shipping)'
+    var box2Name = 'Book + Bookmark + Shirt + Thank you Letter'
+    var box3Name = 'Book + Thank you Letter'
+    var sum = 0
+    const displayCarts = allCarts.map(i => {
+      let itemPrice = 0
+      let itemName = ''
+      switch(i.type) {
+        case '1':
+            itemPrice = box1Price
+            itemName = box1Name
+            break;
+        case '2':
+            itemPrice = box2Price
+            itemName = box2Name
+            break;
+        case '3':
+            itemPrice = box3Price
+            itemName = box3Name
+            break;
+      }
+      let cartPrice = itemPrice * i.quantity
+      sum+=cartPrice
+      return Object.assign(i, {itemPrice}, {cartPrice}, {itemName})
+    })
   nav
     .row
       a(href='/')
@@ -19,35 +48,36 @@ block content
             th.subtotal.text-right Subtotal
             th.actions.text-center Actions
         tbody
-          tr
-            td.text-right 1
-            td.text-medium Book + Thank you Letter
-            td.text-right.text-medium.text-primary 149.000 vnd
-            td.text-center 2
-            td.text-right.text-medium.text-primary 298.000 vnd
-            td.text-center
-              a.btn.btn-danger Delete
-          tr
-            td.text-right 2
-            td.text-medium Giftbox: Book + Bookmark + Shirt + Notebook + Thank you Letter + Website Badge (free shipping)
-            td.text-right.text-medium.text-primary 469.000 vnd
-            td.text-center 1
-            td.text-right.text-medium.text-primary 469.000 vnd
-            td.text-center
-              a.btn.btn-danger Delete
-          tr
-            td.text-right 3
-            td.text-medium Book + Bookmark + Shirt + Thank you Letter
-            td.text-right.text-medium.text-primary 2.000.000 vnd
-            td.text-center 3
-            td.text-right.text-medium.text-primary 6.000.000 vnd
-            td.text-center
-              a.btn.btn-danger Delete
+          each cart, index in displayCarts
+            tr
+              td.text-right #{index + 1}
+              td.text-medium #{cart.itemName}
+              td.text-right.text-medium.text-primary #{cart.itemPrice} vnd
+              td.text-center #{cart.quantity}
+              td.text-right.text-medium.text-primary #{cart.cartPrice} vnd
+              td.text-center
+                a.btn.btn-danger(cart-delete-id=index) Xoá
+          //- tr
+          //-   td.text-right 2
+          //-   td.text-medium Giftbox: Book + Bookmark + Shirt + Notebook + Thank you Letter + Website Badge (free shipping)
+          //-   td.text-right.text-medium.text-primary 469.000 vnd
+          //-   td.text-center 1
+          //-   td.text-right.text-medium.text-primary 469.000 vnd
+          //-   td.text-center
+          //-     a.btn.btn-danger Delete
+          //- tr
+          //-   td.text-right 3
+          //-   td.text-medium Book + Bookmark + Shirt + Thank you Letter
+          //-   td.text-right.text-medium.text-primary 2.000.000 vnd
+          //-   td.text-center 3
+          //-   td.text-right.text-medium.text-primary 6.000.000 vnd
+          //-   td.text-center
+          //-     a.btn.btn-danger Delete
         tfoot
           tr
             td.text-right(colspan='5')
               strong Total
-              h4.text-primary 6.767.000 vnd
+              h4.text-primary #{sum} vnd
   section.section-form
     .row
       h2 Cám ơn bạn đã đặt hàng

@@ -204,6 +204,7 @@ app.get('/api/product/list', validateRequest, productController.listAllProduct);
 
 
 app.post('/api/order/add-to-cart', orderController.addToCart);
+app.post('/api/order/remove-cart', orderController.removeFromCart);
 
 /**
  * OAuth authentication routes. (Sign in)

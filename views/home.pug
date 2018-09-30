@@ -276,7 +276,6 @@ block content
             .btn-wrapper
               a.btn.btn-ghost(href='#', data-open-modal='#modal_2') Mua ngay
               form.dropdown#modal_2
-                input(type='hidden', name='box2_csrf', value=_csrf)
                 .dropdown-header
                   | Chọn số lượng, kích cỡ, và loại áo (nam/nữ). Mỗi một giftbox chỉ bao gồm 1 áo
                   .close(data-close-modal='#modal_2')
@@ -335,8 +334,6 @@ block content
             .btn-wrapper
               a.btn.btn-ghost(href='#', data-open-modal='#modal_3') Mua ngay
               form.dropdown#modal_3
-                input(type='hidden', name='type', value=3)
-                input(type='hidden', name='_csrf', value=_csrf)
                 .dropdown-header
                   | Chọn số lượng:
                   .close(data-close-modal='#modal_3')
@@ -344,7 +341,7 @@ block content
                 .dropdown-body
                   #items
                     .item-option
-                      input.quantity(type='number', name="quantity", min='1', step='1', value='1')
+                      input.quantity(type='number', name="box3_quantity", min='1', step='1', value='1')
                 .dropdown-footer
                   input.submit(type='submit', value='Submit')
   //- section.section-form

@@ -64,7 +64,7 @@ $(document).ready(() => {
     // $.each($('#modal_2').serializeArray(), (i, field) => {
     //   values[field.name] = field.value;
     // });
-    const csrf = $("input[name='box2_csrf']").val();
+    const csrf = $('meta[name=csrf-token]').attr('content');
 
     const quantity = $("input[name='box2_quantity']")
       .map(function () { return $(this).val(); }).get();
@@ -93,6 +93,52 @@ $(document).ready(() => {
         if (data.carts) {
           $('#cartsNumber').html(data.carts.length);
         }
+      });
+  });
+
+
+  $('#modal_3').submit((event) => {
+    event.preventDefault();
+
+
+    // $.each($('#modal_2').serializeArray(), (i, field) => {
+    //   values[field.name] = field.value;
+    // });
+    const csrf = $('meta[name=csrf-token]').attr('content');
+
+    const quantity = $("input[name='box3_quantity']").val();
+
+    const values = [{
+      type: 3,
+      quantity
+    }];
+
+    $.post('api/order/add-to-cart', {
+      cart: values,
+      _csrf: csrf
+    })
+      .done((data) => {
+        // console.log(data);
+        alert('Đã được thêm vào giỏ hàng');
+        if (data.carts) {
+          $('#cartsNumber').html(data.carts.length);
+        }
+      });
+  });
+
+  $('[cart-delete-id]').off('click');
+  $('[cart-delete-id]').click(function deleteCart(e) {
+    e.preventDefault();
+    const target = $(this).attr('cart-delete-id');
+    const csrf = $('meta[name=csrf-token]').attr('content');
+    $.post('api/order/remove-cart', {
+      cardId: target,
+      _csrf: csrf
+    })
+      .done((data) => {
+        // console.log(data);
+        alert('Đã xoá');
+        location.reload();
       });
   });
 });
